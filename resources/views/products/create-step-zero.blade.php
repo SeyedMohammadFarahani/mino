@@ -10,7 +10,6 @@
 
     <div class="container page-body-wrapper mr-0">
 
-
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item" style="padding-top:20vh;">
@@ -83,6 +82,14 @@
             <h3 style="margin-right: 100px;margin-bottom:20px;text-align:right;">نام محصول خود را انتخاب کنید</h3>
 
             <div class="col-md-10">
+                @if(session('flash_message'))
+                    <div
+                        class="alert alert-{{session('flash_message_level') }} alert-dismissible d-flex justify-content-center"
+                        role="alert" style="font-size: medium; font-weight: bold">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('flash_message') }}
+                    </div>
+                @endif
 
                 <form action="{{ route('products.create.step.zero.post') }}" method="post">
                     @csrf
@@ -130,14 +137,7 @@
 
                     </div>
                 </form>
-                @if(session('flash_message'))
-                    <div
-                        class="alert alert-{{session('flash_message_level') }} alert-dismissible d-flex justify-content-center"
-                        role="alert" style="font-size: medium; font-weight: bold">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        {{ session('flash_message') }}
-                    </div>
-                @endif
+
             </div>
         </div>
     </div>
